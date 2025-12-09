@@ -1,0 +1,113 @@
+:root {
+    --primary-color: #e53935; /* Kırmızı renk */
+    --background-color: #f0f0f0;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: var(--background-color);
+    color: #333;
+    padding-bottom: 20px;
+}
+
+/* Kazanan Başlık Alanı (Büyük Boşluk) */
+.winner-header {
+    background-color: #fff;
+    padding: 50px 20px; /* Büyük boşluk için padding */
+    margin-bottom: 20px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#winner-text {
+    font-size: 2em;
+    color: var(--primary-color);
+}
+
+/* Cips Resimlerini İçeren Ana Konteyner (Flexbox ile Duyarlı Düzen) */
+.chip-container {
+    display: flex;
+    flex-wrap: wrap; /* Kartlar sığmazsa alt satıra geçer */
+    justify-content: center;
+    gap: 20px;
+    padding: 0 10px;
+}
+
+.chip-card {
+    background: #fff;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    width: 200px; /* Temel genişlik */
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+    position: relative;
+}
+
+/* Kartı büyüt ve gölge ekle (Hover) */
+.chip-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.chip-image {
+    width: 100%; /* Resim kartı doldursun */
+    max-width: 150px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Oylama Kutusu ve Tik İşareti */
+.vote-box {
+    position: absolute;
+    top: -10px; /* Resimlerin üst köşesine yerleştir */
+    right: -10px;
+    width: 30px;
+    height: 30px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+
+.checkmark {
+    color: white;
+    font-size: 1.2em;
+    font-weight: bold;
+    /* Varsayılan olarak tik işaretini gizle */
+    opacity: 0; 
+    transition: opacity 0.2s;
+}
+
+/* Tıklanan Cips Stili */
+.chip-card.voted {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 15px rgba(229, 57, 53, 0.5); /* Kırmızı parlama */
+}
+
+/* Tıklanan Cipsin Tik İşaretini Göster */
+.chip-card.voted .checkmark {
+    opacity: 1;
+}
+
+/* ======================================= */
+/* DUYARLILIK (RESPONSIVE) AYARLARI */
+/* ======================================= */
+
+/* Mobil Cihazlar (Ekran genişliği 600px altı) */
+@media (max-width: 600px) {
+    .chip-card {
+        width: 100%; /* Mobil cihazda kartlar tam genişlik alır */
+        max-width: 300px;
+    }
+
+    #winner-text {
+        font-size: 1.5em;
+    }
+}
